@@ -50,6 +50,7 @@ def verify_input(relations_arity,relations_size,pkSize,inconsistency):
         sys.exit("INPUT ERRR: The length of the relations_arity, relations_size, pkSize and inconsistency should all be equal !")
 
 if __name__ == "__main__":
+    random.seed(a=42)
     parser = argparse.ArgumentParser(description='Database generator for ASP(Answer Set Programming).')
     parser.add_argument('--relations_arity', '-a', required=True , type=int, nargs='+',
                         help='a tuple a_1 a_2 ... a_n) where a_i is the arity of the i-th relation')
