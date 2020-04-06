@@ -1,0 +1,24 @@
+
+\section{Introduction}
+The aim of this article is to present a fair comparison between two methods for solving the problem of CERTAINTY(q). Considering an inconsistent database, a repair is a maximal set of tuples from this database that respects his constraints. The CERTAINTY(q) problem consists in answering the question of knowing if it exists a repair that falsifies the query. Depending on the query, the CERTAINTY(q) problem can be either in first order complexity class, or in NP or co-NP. For the queries that are in first order, we want to compare the efficiencies of the generate-and-test method and of the first order rewriting method. 
+
+
+
+\section{Chosen queries}
+
+$$q_1(z) := \exists x, y, v, w (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w)) $$
+
+$$q_2(z,w) :=  \exists x, y, v (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w)) $$
+
+$$q_3(z) :=  \exists x, y, v, u, d (R_1(\underline{x},y,z) \wedge R_3(\underline{y}, v) \wedge R_2(\underline{v}, u,d)) $$
+
+$$q_4(z,d) :=  \exists x, y, v, u (R_1(\underline{x},y,z) \wedge R_3(\underline{y}, v)\wedge R_2(\underline{v}, u, d)) $$
+
+$$q_5(z) := \exists x, y, v, w (R_1(\underline{x},y,z) \wedge R_4(\underline{y, v},w)) $$
+
+$$q_6(z) := \exists x, y, x', w, d (R_1(\underline{x},y,z) \wedge R_2(\underline{x'},y,w))
+\wedge R_5(\underline{x},y,d) $$
+
+$$q_7(z) := \exists x, y, w, d (R_1(\underline{x},y,z)
+\wedge R_2(\underline{y},x,w) \wedge R_5(\underline{x},y,d)) $$
+
