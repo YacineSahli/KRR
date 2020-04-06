@@ -28,7 +28,7 @@ def generate_db(relations_arity, relations_size, pk_size, inconsistency):
                 update_array(cnt_array, 0, pk_size[i]-1)
                 for index in range(pk_size[i], len(cnt_array)):
                     cnt_array[index] = 1
-            result += ")\n"
+            result += ").\n"
             size += 1
     return result
 

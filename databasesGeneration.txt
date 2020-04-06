@@ -1,9 +1,9 @@
 
 Q4: 50 000
-	python databaseGenerator.py  -a 50000  50000 50000 -r 3 3 2 -p 1 1 1 -i 0.2 0.2 0.2
+	python databaseGenerator.py  -r 50000  50000 50000 -a 3 3 2 -p 1 1 1 -i 0.2 0.2 0.2
 
 Q4: 250 000
-	python databaseGenerator.py  -a 250000  250000 250000 -r 3 3 2 -p 1 1 1 -i 0.2 0.2 0.2
+	python databaseGenerator.py  -r 250000  250000 250000 -a 3 3 2 -p 1 1 1 -i 0.2 0.2 0.2
 
 Q4: 1 000 000
-	python databaseGenerator.py  -a 1000000 1000000 1000000 -r 3 3 2 -p 1 1 1 -i 0.2 0.2 0.2
+	python databaseGenerator.py  -r 1000000 1000000 1000000 -a 3 3 2 -p 1 1 1 -i 0.2 0.2 0.2
