@@ -1,0 +1,31 @@
+q5(z): R(X,Y,Z), S(Y,V,W)
+
+CERTAINTY(Z) :- R(X,Y,Z), not R_1(Z,X).
+R_1(Z,X) :- not R_2(Z,X,Y,Z_0_1), R(X,Y,Z_0_1).
+R_2(Z,X,Y,Z_0_1) :- Z_0_1=Z, R_3(Z,X,Y), R(X,Y,Z_0_1).
+R_3(Z,X,Y) :- R(X,Y,Z), S(Y,V,W).
+
+
+
+q6(z) : R(X,Y,Z),S(V,Y,W),T(X,Y,D)
+
+R_1(Z,V) :- not R_2(Z,V,Y,W), S(V,Y,W).
+R_2(Z,V,Y,W) :- R(X,Y,Z), not R_3(Z,V,Y,W,X), S(V,Y,W).
+R_3(Z,V,Y,W,X) :- R(X,Z_2_0,Z_2_1), not R_4(Z,V,Y,W,X,Z_2_0,Z_2_1), S(V,Y,W).
+R_4(Z,V,Y,W,X,Z_2_0,Z_2_1) :- R_5(Z,V,Y,W,X), Z_2_1=Z, S(V,Y,W), Z_2_0=Y, R(X,Z_2_0,Z_2_1).
+R_5(Z,V,Y,W,X) :- T(X,Y,D), not R_6(Z,V,Y,W,X), R(X,Y,Z), S(V,Y,W).
+R_6(Z,V,Y,W,X) :- T(X,Z_5_0,D), not R_7(Z,V,Y,W,X,Z_5_0,D), R(X,Y,Z), S(V,Y,W).
+R_7(Z,V,Y,W,X,Z_5_0,D) :- T(X,Z_5_0,D), R(X,Y,Z), Z_5_0=Y, S(V,Y,W).
+
+
+
+q7(z) : R(X,Y,Z),S(Y,X,W),T(X,Y,D)
+
+CERTAINTY(Z) :- not R_1(Z,Y), S(Y,X,W).
+R_1(Z,Y) :- not R_2(Z,Y,X,W), S(Y,X,W).
+R_2(Z,Y,X,W) :- not R_3(Z,Y,X,W), S(Y,X,W), R(X,Y,Z).
+R_3(Z,Y,X,W) :- S(Y,X,W), not R_4(Z,Y,X,W,Z_2_0,Z_2_1), R(X,Z_2_0,Z_2_1).
+R_4(Z,Y,X,W,Z_2_0,Z_2_1) :- R(X,Z_2_0,Z_2_1), Z_2_0=Y, S(Y,X,W), Z_2_1=Z, R_5(Z,Y,X,W).
+R_5(Z,Y,X,W) :- T(X,Y,D), not R_6(Z,Y,X,W), S(Y,X,W), R(X,Y,Z).
+R_6(Z,Y,X,W) :- not R_7(Z,Y,X,W,Z_5_0,D), S(Y,X,W), T(X,Z_5_0,D), R(X,Y,Z).
+R_7(Z,Y,X,W,Z_5_0,D) :- S(Y,X,W), T(X,Z_5_0,D), R(X,Y,Z), Z_5_0=Y.
