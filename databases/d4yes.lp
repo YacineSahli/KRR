@@ -1,3 +1,3 @@
-r(x,y,z).
-s(v,u,d).
-t(y,v).
+r1(x,y,z).
+r3(v,u,d).
+r2(y,v).
