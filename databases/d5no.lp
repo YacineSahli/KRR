@@ -1,3 +1,3 @@
 r1(x,y,z).
-r2(y,v,w).
+r4(y,v,w).
 r1(x,y,zz).
