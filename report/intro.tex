@@ -1,7 +1,18 @@
 
 \section{Introduction}
-The aim of this article is to present a fair comparison between two methods for solving the problem of CERTAINTY(q). Considering an inconsistent database, a repair is a maximal set of tuples from this database that respects his constraints. The CERTAINTY(q) problem consists in answering the question of knowing if it exists a repair that falsifies the query. Depending on the query, the CERTAINTY(q) problem can be either in first order complexity class, or in NP or co-NP. For the queries that are in first order, we want to compare the efficiencies of the generate-and-test method and of the first order rewriting method. 
+The aim of this article is to present a fair comparison between two methods for
+solving the problem of CERTAINTY(q). Considering an inconsistent database, a
+repair is a maximal set of tuples from this database that respects his
+constraints. The CERTAINTY(q) problem consists in answering the question of
+knowing if it exists a repair that falsifies the query. Depending on the query,
+the CERTAINTY(q) problem can be either in first order complexity class, or in
+NP or co-NP. For the queries that are in first order, we want to compare the
+efficiency of the generate-and-test method and of the first order rewriting
+method.
 
+To make a one to one comparison with the results found by Akhil A.Dixit and
+Phokion G.Kolaitis in their "A SAT-Based System for Consistent Query
+Answering", we decided to reuse the same FO-rewritable queries they used to prove that the KW-fo rewriting can be more efficient by using ASP instead of SQL.
 
 
 \section{Chosen queries}

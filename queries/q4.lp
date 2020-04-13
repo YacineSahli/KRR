@@ -6,5 +6,6 @@
 
 1 {rr3(X,Y) : r3(X,Y)} 1 :- r3(X,_).
 
-:- rr1(X,Y,Z), rr2(V,U,D), rr3(Y,V). 
+:- rr1(X,Y,Z), rr2(V,U,D), rr3(Y,V).
 
+#show certainty/2.
