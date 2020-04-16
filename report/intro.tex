@@ -17,18 +17,13 @@ Answering", we decided to reuse the same FO-rewritable queries they used to prov
 
 \section{Chosen queries}
 
-$$q_1(z) := \exists x, y, v, w (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w)) $$
 
-$$q_2(z,w) :=  \exists x, y, v (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w)) $$
-
-$$q_3(z) :=  \exists x, y, v, u, d (R_1(\underline{x},y,z) \wedge R_3(\underline{y}, v) \wedge R_2(\underline{v}, u,d)) $$
-
-$$q_4(z,d) :=  \exists x, y, v, u (R_1(\underline{x},y,z) \wedge R_3(\underline{y}, v)\wedge R_2(\underline{v}, u, d)) $$
-
-$$q_5(z) := \exists x, y, v, w (R_1(\underline{x},y,z) \wedge R_4(\underline{y, v},w)) $$
-
-$$q_6(z) := \exists x, y, x', w, d (R_1(\underline{x},y,z) \wedge R_2(\underline{x'},y,w))
-\wedge R_5(\underline{x},y,d) $$
-
-$$q_7(z) := \exists x, y, w, d (R_1(\underline{x},y,z) \wedge R_2(\underline{y},x,w) \wedge R_5(\underline{x},y,d)) $$
-
+\begin{align*}
+q_1(z) &:= \exists x, y, v, w (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w))\\
+q_2(z,w) &:=  \exists x, y, v (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w)) \\
+q_3(z) &:=  \exists x, y, v, u, d (R_1(\underline{x},y,z) \wedge R_3(\underline{y}, v) \wedge R_2(\underline{v}, u,d)) \\
+q_4(z,d) &:=  \exists x, y, v, u (R_1(\underline{x},y,z) \wedge R_3(\underline{y}, v)\wedge R_2(\underline{v}, u, d)) \\
+q_5(z) &:= \exists x, y, v, w (R_1(\underline{x},y,z) \wedge R_4(\underline{y, v},w)) \\
+q_6(z) &:= \exists x, y, x', w, d (R_1(\underline{x},y,z) \wedge R_2(\underline{x'},y,w)) \wedge R_5(\underline{x},y,d) \\
+q_7(z) &:= \exists x, y, w, d (R_1(\underline{x},y,z) \wedge R_2(\underline{y},x,w) \wedge R_5(\underline{x},y,d))
+\end{align*}

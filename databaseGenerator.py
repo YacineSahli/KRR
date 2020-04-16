@@ -46,7 +46,7 @@ def update_array(array, start, stop):
     array[index] += 1
 
 def verify_input(relations_arity,relations_size,pkSize,inconsistency):
-    if(not(len(relations_arity) == len(relations_size) == len(pkSize) == len(inconsistency))):
+    if not len(relations_arity) == len(relations_size) == len(pkSize) == len(inconsistency):
         sys.exit("INPUT ERRR: The length of the relations_arity, relations_size, pkSize and inconsistency should all be equal !")
 
 if __name__ == "__main__":
