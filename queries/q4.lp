@@ -9,3 +9,7 @@
 :- rr1(X,Y,Z), rr2(V,U,D), rr3(Y,V).
 
 #show certainty/2.
+
+
+
+

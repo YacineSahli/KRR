@@ -1,12 +1,18 @@
-certainty(Z):-r1(X,Y,Z),r2(V,U,D),not q1(X,Y,Z),not q2(X,Y),not q3(X,Y,D),not q4(X,Y,D).
-q1(X,Y,Z):-r1(X,Y,Z1),not Z1=Z,r1(X,Y,Z).
-q2(X,Y):-r1(X,Y,Z1),not p2(Y,V),r3(Y,V).
-p2(Y,V):-r3(Y,V).
-q3(X,Y,D):-r1(X,Y,Z1),p3(Y,D).
-p3(Y,D):-r3(Y,V),not p31(V,D),r2(V,U,D).
-p31(V,D):-r2(V,U,D).
-q4(X,Y,D):-r1(X,Y,Z1),p4(D,Y).
-p4(Y,D):-r3(Y,V),p41(V,D).
-p41(V,D):-r2(V,U,D1),not D1=D,r2(V,U,D).
+%%%
+% Query from Dixit & Kolaitis.
+% q3(z) := R1(x,y,z) AND R3(y,v) AND R2(v,u,d)
+% Note that d is a bound variable!!!
+%%%
 
-#show certainty/1.
+%%% The following rule is optional.
+cqa(Z) :- not cqa(Z), r_1(_,_,Z).
+%%%
+cqa(Z) :- r_1(X,_,Z), not p_0(X,Z), not p_1(X).
+p_0(X,Z) :- r_1(X,_,W), W != Z, r_1(_,_,Z).
+p_1(X) :- r_1(X,Y,_), not q_3(Y).
+q_3(Y) :- r_3(Y,_), not q_2(Y).
+q_2(Y) :- r_3(Y,V), not q_1(V).
+q_1(V) :- r_2(V,_,_).
+
+#show cqa/1.
+
