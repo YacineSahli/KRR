@@ -1,11 +1,12 @@
-%q6(z) : r1(X,Y,Z), r2(V,Y,W), r5(X,Y,D)
+certainty(Z):-not certainty(Z),r1(_,_,Z).
+certainty(Z):-r1(_,_,Z),q1(X1,Z).
+q1(X1,Z):-r2(X1,Y,W),not q2(X1,Z,X,D),r5(X,Y,D),r1(X,Y,Z).
+q2(X1,Z,X,D):-r2(X1,Y,W),q4(X,Y,Z,D),r5(X,Y,D),r1(X,Y,Z).
+q2(X1,Z,X,D):-r2(X1,Y,W),not q3(Y,Z,W),r5(X,Y,D),r1(X,Y,Z).
+q3(Y,Z,W):-r5(X,Y,D),r1(X,Y,Z),r2(_,Y,W).
+q4(X,Y,Z,D):-r5(X,Y1,D1),r1(X,Y2,Z1),not Z=Z1,r1(X,Y,Z),r5(X,Y,D).
+q4(X,Y,Z,D):-r5(X,Y1,D1),r1(X,Y2,Z1),not Y=Y1,r1(X,Y,Z),r5(X,Y,D).
+q4(X,Y,Z,D):-r5(X,Y1,D1),r1(X,Y2,Z1),not Y=Y2,r1(X,Y,Z),r5(X,Y,D).
+q4(X,Y,Z,D):-r5(X,Y1,D1),r1(X,Y2,Z1),not D=D1,r1(X,Y,Z),r5(X,Y,D).
 
-d1(Z,V) :- not d2(Z,V,Y,W), r2(V,Y,W), r1(X,Y,Z).
-d2(Z,V,Y,W) :- r1(X,Y,Z), not d3(Z,V,Y,W,X), r2(V,Y,W).
-d3(Z,V,Y,W,X) :- r1(X,P,Q), not d4(Z,V,Y,W,X,P,Q), r2(V,Y,W), r1(X,Y,Z).
-d4(Z,V,Y,W,X,P,Q) :- d5(Z,V,Y,W,X), Q=Z, r2(V,Y,W), P=Y, r1(X,P,Q).
-d5(Z,V,Y,W,X) :- r5(X,Y,D), not d6(Z,V,Y,W,X), r1(X,Y,Z), r2(V,Y,W).
-d6(Z,V,Y,W,X) :- r5(X,Z_5_0,D), not d7(Z,V,Y,W,X,Z_5_0,D), r1(X,Y,Z), r2(V,Y,W).
-d7(Z,V,Y,W,X,P,D) :- r5(X,P,D), r1(X,Y,Z), P=Y, r2(V,Y,W).
-
-#show d1/2.
+#show certainty/1.
