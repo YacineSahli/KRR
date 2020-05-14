@@ -30,11 +30,11 @@ def generateYesInstance(size, inconsistency):
     x2 = size
     for i in range(x1):
         res += "r1(x"+str(i)+",y"+str(i)+",z"+str(i)+")."
-        res += "r4(y"+str(i)+",v"+str(i)+",w"+str(i)+").\n"
+        res += "r4(y"+str(i)+",v"+str(i)+",w).\n"
     for i in range(x1,x2):
         r1 = random.randint(0, x1-1)
         res += "r1(x"+str(i)+",y"+str(r1)+",z"+str(r1)+")."
-        res += "r4(y"+str(r1)+",v"+str(r1)+",w"+str(r1)+").\n"
+        res += "r4(y"+str(r1)+",v"+str(r1)+",w).\n"
     return res
 
 
@@ -47,11 +47,11 @@ def generateNoInstance(size, inconsistency, error):
     for i in range(size):
         if i<noIncons:
             res += "r1(x"+str(i)+",y"+str(i)+",z"+str(i)+")."
-            res += "r4(y"+str(i)+",v"+str(i)+",w"+str(i)+").\n"
+            res += "r4(y"+str(i)+",v"+str(i)+",w).\n"
         else:
             r1 = random.randint(0, noIncons-1)
             res += "r1(x"+str(i)+",y"+str(r1)+",z"+str(r1)+")."
-            res += "r4(y"+str(r1)+",v"+str(r1)+",w"+str(r1)+").\n"
+            res += "r4(y"+str(r1)+",v"+str(r1)+",w).\n"
         res += "r1(x"+str(i)+",y"+str(size+i)+",z"+str(size+i)+").\n"
 
     return res
