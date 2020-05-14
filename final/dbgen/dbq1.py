@@ -46,8 +46,8 @@ def generateNoInstance(size, inconsistency, error):
 
     noIncons = math.ceil(size*(1-inconsistency))
 
-    for i in range(size):
-        if i<noIncons:
+    for i in range(int(size/2)):
+        if i<int(noIncons/2):
             res += "r1(x"+str(i)+",y"+str(i)+",z"+str(i)+")."
             res += "r2(y"+str(i)+",v"+str(i)+",w"+str(i)+").\n"
         else:
