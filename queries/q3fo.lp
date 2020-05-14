@@ -2,6 +2,7 @@
 % Query from Dixit & Kolaitis.
 % q3(z) := R1(x,y,z) AND R3(y,v) AND R2(v,u,d)
 % Note that d is a bound variable!!!
+% R1->R3->R2
 %%%
 
 %%% The following rule is optional.

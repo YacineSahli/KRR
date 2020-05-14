@@ -38,9 +38,9 @@ def generateYesInstance(size, inconsistency):
         r1 = random.randint(0, x1-1)
         r2 = random.randint(0, x1-1)
         r3 = random.randint(0, x1-1)
-        res += "r1(x"+str(r1)+",y"+str(r3)+",z)."
+        res += "r1(x"+str(r1)+",y"+str(x1+i)+",z)."
         res += "r2(v"+str(r2)+",u"+str(x1+i)+",d"+str(x1+i)+")."
-        res += "r3(y"+str(r3)+",v"+str(r2)+").\n"
+        res += "r3(y"+str(x1+i)+",v"+str(r2)+").\n"
     return res
 
 
