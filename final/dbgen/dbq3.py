@@ -59,7 +59,7 @@ def generateNoInstance(size, inconsistency, error):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Database generator for the 3th query i.e. q= ∃x, y, z, v, w (R 1 (x| y, z) ∧ R 4 (y| v, "w"))")
+        description="Database generator for the 3th query i.e. q= ∃x, y, z, v, w (R 1 (x| y, z) ∧ R 4 (y| v, 'w'))")
     parser.add_argument('--instance', '-i', required=True, type=str,
                         nargs='+', help='the instance that may be return by the query')
     parser.add_argument('--size', '-s', required=True,
