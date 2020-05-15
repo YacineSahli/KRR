@@ -22,11 +22,11 @@
 %% in the same archive or directory.)
 %%
 %% The first command in your LaTeX source must be the \documentclass command.
-\documentclass[acmsmall,review]{acmart}
+\documentclass[acmsmall]{acmart}
 
 \usepackage{listings}
 \usepackage{amsmath}
-
+\usepackage{float}
 
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
@@ -42,14 +42,11 @@
 \setcopyright{acmcopyright}
 \copyrightyear{2020}
 \acmYear{2020}
-\acmDOI{10.1145/1122445.1122456}
 
 %% These commands are for a PROCEEDINGS abstract or paper.
 \acmConference[Galway '20]{Galway '20: ACM International Conference on Information and Knowledge Management}{October 19--23, 2020}{Galway, Ireland}
 \acmBooktitle{Galway '20: ACM International Conference on Information and Knowledge Management,
   October 19--23, 2020, Galway, Ireland}
-\acmPrice{15.00}
-\acmISBN{978-1-4503-XXXX-X/18/06}
 
 
 %%
@@ -120,7 +117,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-	Consistent query answering for inconsistent databases is a running problem...
+	Consistent query answering for inconsistent databases is a running problem. We realized an ASP implementation of the consistent query answering problem and ran some experiments comparing a generate and test method against a first-order rewriting.
 \end{abstract}
 
 %%
@@ -176,11 +173,8 @@
 
 \input{results.tex}
 
-\begin{acks}
-
-\end{acks}
-
 \appendix
+
 
 
 \end{document}

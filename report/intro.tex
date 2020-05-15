@@ -5,22 +5,27 @@ solving the problem of CERTAINTY(q). Considering an inconsistent database, a
 repair is a maximal set of tuples from this database that respects his
 constraints. The CERTAINTY(q) problem consists in answering the question of
 knowing if it exists a repair that falsifies the query. Depending on the query,
-the CERTAINTY(q) problem can have a first order complexity. For the queries that are in first order, we want to compare the
-efficiency of the generate-and-test method and of the first order rewriting
-method. 
+the CERTAINTY(q) problem can have a first order complexity. For the queries
+that are in first order, we want to compare the efficiency of the
+generate-and-test method and of the first order rewriting method.
 
-The comparison is realised here on few queries with ASP. For each query, we have measured the execution times of the two methods on databases of different sizes, while distinguishing the yes-instances (databases for which the CERTAINTY(q) problem is true) and the no-instances.
+The comparison is realised here on few queries with ASP. For each query, we
+have measured the execution times of the two methods on databases of different
+sizes, while distinguishing the yes-instances (databases for which the
+CERTAINTY(q) problem is true) and the no-instances.
 
 
 
 
 \section{Chosen queries}
 
-To make a one to one comparison with the results found by Akhil A.Dixit and
-Phokion G.Kolaitis in their "A SAT-Based System for Consistent Query
-Answering", we decided to reuse the same FO-rewritable queries they used to prove that the KW-fo rewriting can be more efficient by using ASP instead of SQL. 
+To make a one to one comparison with the results found by Akhil A. Dixit and Phokion G. Kolaitis in their "A SAT-Based System for Consistent Query
+Answering", we decided to reuse the same FO-rewritable queries they used to
+prove that the KW-fo rewriting can be more efficient by using ASP instead of
+SQL.
 
-For an easiest implementation, we remove the free variables of the queries. At the end, here are the queries used for the tests we performed.
+For a more simple implementation, we remove the free variables of the queries. At
+the end, here are the queries used for the tests we performed.
 
 \begin{align*}
 q_1 &:= \exists x, y, z, v, w (R_1(\underline{x},y,z) \wedge R_2(\underline{y}, v, w))\\
