@@ -1,66 +1,75 @@
 
 \section{First query}
 
+FO Rewriting:
 \begin{lstlisting}
-certainty(Z):-r1(X,Y,Z),not p0(X,Z),not p1(x).
-p0(X,Z):-r1(X,Y,Z1),r1(X,_,Z),not Z=Z1.
-p1(X):-r1(X,Y,Z1),not p2(Y).
+q1:-r1(X,Y,Z),not p1(X).
+p1(X):-r1(X,Y,Z),not p2(Y).
 p2(Y):-r2(Y,V,W).
 
-#show certainty/1.
+certainty:-q1.
+certainty:-not certainty.
+
+#show certainty/0.
 \end{lstlisting}
+
+Generate and Test:
+\begin{lstlisting}
+1{rr1(X,Y,Z):r1(X,Y,Z)}1:-r1(X,_,_).
+1{rr2(X,Y,Z):r2(X,Y,Z)}1:-r2(X,_,_).
+:-rr1(X,Y,Z),rr2(Y,V,W).
+
+#show .
+\end{lstlisting}
+
 
 \section{Second query}
 
-\begin{lstlisting}
-certainty(W,Z):-r1(X,Y,Z),not p0(Z,X),not q0(W,X), r2(P,Q,W).
-p0(Z,X):-r1(X,Y,Z1),not Z1=Z,r1(X,_,Z).
-q0(W,X):-r1(X,Y,Z1),not q1(W,Y), r2(P,Q,W).
-q1(W,Y):-r2(Y,V,W),not q2(W,Y).
-q2(W,Y):-r2(Y,V,W1),not W1=W,r2(Y,_,W).
 
-#show certainty/2.
+FO Rewriting:
+\begin{lstlisting}
+q1 :- r1(X,_,_), not p1(X).
+p1(X) :- r1(X,Y,_), not q3(Y).
+q3(Y) :- r3(Y,_), not q2(Y).
+q2(Y) :- r3(Y,V), not q1(V).
+q1(V) :- r2(V,_,_).
+
+certainty:-q1.
+certainty:-not certainty.
+
+#show certainty/0.
 \end{lstlisting}
 
-\section{Fourth query}
-
-Generate-and-test method. (Does not work yet).
-
+Generate and Test:
 \begin{lstlisting}
-1 {rr1(X,Y,Z) : r1(X,Y,Z)} 1 :- r1(X,_,_).
+1{rr1(X,Y,Z):r1(X,Y,Z)}1:-r1(X,_,_).
+1{rr2(X,Y,Z):r2(X,Y,Z)}1:-r2(X,_,_).
+1{rr3(X,Y):r3(X,Y)}1:-r3(X,_).
+:-rr1(X,Y,Z),rr3(Y,V),rr2(V,U,D).
 
-1 {rr4(X,Y,Z) : r4(X,Y,Z)} 1 :- r4(X,Y,_).
-
-:- rr1(X,Y,Z), rr4(Y,V,W). 
+#show .
 \end{lstlisting}
 
 
-FO rewriting
+\section{Third query}
 
+FO Rewriting:
 \begin{lstlisting}
-p(X,Z) :- r1(X,Y,Z2), Z2!=Z, r1(X,Y2,Z).
-t(X) :- r1(X,Y,Z), not q(Y).
-q(Y) :- r4(Y,V,W).
-answer(Z) :- r1(X,Y,Z), not p(X,Z), not t(X).
+q1:-r1(X,Y,Z),not p1(X).
+p1(X):-r1(X,Y,Z),not p2(Y).
+p2(Y):-r4(Y,V,W),W==w.
 
-#show answer/1.
+certainty:-q1.
+certainty:-not certainty.
+
+#show certainty/0.
 \end{lstlisting}
 
-\section{Seventh query}
-
-
-FO rewriting
-
+Generate and Test:
 \begin{lstlisting}
-certainty(Z) :- not d1(Z,Y), r2(Y,X,W), r1(X,Y,Z).
-d1(Z,Y) :- not d2(Z,Y,X,W), r2(Y,X,W), r1(X,Y,Z).
-d2(Z,Y,X,W) :- not d3(Z,Y,X,W), r2(Y,X,W), r1(X,Y,Z).
-d3(Z,Y,X,W) :- r2(Y,X,W), not d4(Z,Y,X,W,P,Q), r1(X,P,Q), r1(X,Y,Z).
-d4(Z,Y,X,W,P,Q) :- r1(X,P,Q), P=Y, r2(Y,X,W), Q=Z, d5(Z,Y,X,W).
-d5(Z,Y,X,W) :- r5(X,Y,D), not d6(Z,Y,X,W), r2(Y,X,W), r1(X,Y,Z).
-d6(Z,Y,X,W) :- not d7(Z,Y,X,W,P,D), r2(Y,X,W), r5(X,P,D), r1(X,Y,Z).
-d7(Z,Y,X,W,P,D) :- r2(Y,X,W), r5(X,Z_5_0,D), r1(X,Y,Z), P=Y.
+1{rr1(X,Y,Z):r1(X,Y,Z)}1:-r1(X,_,_).
+1{rr4(X,Y,Z):r4(X,Y,Z)}1:-r4(X,_,_).
+:-rr1(X,Y,Z),rr4(Y,V,w).
 
-#show certainty/1.
+#show .
 \end{lstlisting}
-
