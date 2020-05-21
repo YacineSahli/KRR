@@ -5,4 +5,4 @@ p2(Y):-r2(Y,V,W).
 
 certainty(Z) :- not certainty(Z), r1(_,_,Z).
 
-#show certainty/1.
+#show .

@@ -15,5 +15,5 @@ q_3(Y) :- r3(Y,_), not q_2(Y).
 q_2(Y) :- r3(Y,V), not q_1(V).
 q_1(V) :- r2(V,_,_).
 
-#show cqa/1.
+#show .
 

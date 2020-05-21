@@ -4,4 +4,6 @@ q0(W,X):-r1(X,Y,Z1),not q1(W,Y), r2(P,Q,W).
 q1(W,Y):-r2(Y,V,W),not q2(W,Y).
 q2(W,Y):-r2(Y,V,W1),not W1=W,r2(Y,_,W).
 
-#show certainty/2.
+certainty(W,Z) :- not certainty(W,Z), r1(_,_,Z), r2(_,_,W).
+
+#show .
