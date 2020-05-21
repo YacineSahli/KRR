@@ -2,7 +2,7 @@ import os
 import sys
 
 tmp_file = 'bosimfq15846ebaefvs.lp'
-output_file = 'q1test.lp'
+output_file = 'q1gt.lp'
 
 script = """
 %q1(z) := ∃x, y, v, w (R1(x | y, z) ∧ R2(y | v, w))
