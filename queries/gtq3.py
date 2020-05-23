@@ -1,53 +1,24 @@
-import os
+import gtmethods
 import sys
+
+# q3(z) := ∃x, y, v, u, d (r1(x| y, z) and r3(y| v) and r2(v| u, d))
 
 tmp_file = 'bosimfq15812baefvs.lp'
 output_file = 'q3gt.lp'
 
 script = """
-%q3(z) := ∃x, y, v, u, d (r1(x| y, z) and r3(y| v) and r2(v| u, d))
-
 1 {rr1(X,Y,Z) : r1(X,Y,Z)} 1 :- r1(X,_,_).
 1 {rr2(X,Y,Z) : r2(X,Y,Z)} 1 :- r2(X,_,_).
 1 {rr3(X,Y) : r3(X,Y)} 1 :- r3(X,_).
-
-rr(X,Y,Z,V,U,D) :- rr1(X,Y,Z), rr3(Y,V), rr2(V,U,D).
-
 """
 
-def build_rr_line(s :str):
-    array = s.replace('q(','').replace(')','').strip('\n').split(' ')
-    res = ':- '
-    for var in array:
-        res += 'rr(_,_,' + var + ',_,_,_), '
-    return res[:-2] + '.\n'
-    
-def write_lp_file(s: str):
-    rr_line = build_rr_line(s)
-    f = open(output_file, "w")
-    f.write(script)
-    f.write(rr_line)
-    f.write("#show .\n")
-    f.close()
-    
-def write_tmp_file():
-    f = open(tmp_file, "w")
-    f.write('q(Z) :- r1(_,_,Z).\n #show q/1.')
-    f.close()
+query = 'q(Z) :- r1(X,Y,Z), r3(Y,V), r2(V,U,D).\n #show q/1.'
 
-def rm_tmp_file():
-    cmd = 'rm ' + tmp_file
-    os.system(cmd)
+
+def get_script(var: str):
+    return script + ':- rr1(X,Y,' + var + '), rr3(Y,V), rr2(V,_,_).\n'
+
 
 if __name__ == "__main__":
-    
-    if len(sys.argv) != 2:
-        print('Input file path expected as argument')
-    else:
-        write_tmp_file()
-        cmd = 'clingo ' + sys.argv[1] + ' ' + tmp_file
-        stream = os.popen(cmd)
-        output = stream.readlines()
-        write_lp_file(output[4])
-        rm_tmp_file()
-        
+    gtmethods.parse_argv(sys.argv, get_script, query, output_file, tmp_file)
+
