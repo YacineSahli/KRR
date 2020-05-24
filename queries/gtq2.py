@@ -1,10 +1,9 @@
-import gtmethods
+import execute_query
 import sys
 
 # q2(z,w) := ∃x, y, v (r1(x | y, z) ∧ r2(y | v, w))
 
-tmp_file = 'bosimfq158plkefvs.lp'
-output_file = 'q2gt.lp'
+tmp_file = 'q2gt.lp'
 
 script = """
 1 {rr1(X,Y,Z) : r1(X,Y,Z)} 1 :- r1(X,_,_).
@@ -23,5 +22,5 @@ def get_script(var: str):
 
 
 if __name__ == "__main__":
-    gtmethods.parse_argv(sys.argv, get_script, query, output_file, tmp_file)
+    execute_query.parse_argv(sys.argv, get_script, query, tmp_file)
 
