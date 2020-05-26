@@ -1,32 +1,29 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  15 MAY 2020 11:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2020.3.8)  15 MAY 2020 22:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report.tex
+**report.tex report2.pdf
 (./report.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-02-25>
 
 ! LaTeX Error: File `acmart.cls' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: cls)
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.26 ^^M
-        
-*** (cannot \read from terminal in nonstop modes)
+Enter file name: X
 
- 
+ )
+(\end occurred when \ifx on line 26 was incomplete)
+(\end occurred when \ifx on line 26 was incomplete) 
 Here is how much of TeX's memory you used:
- 10 strings out of 494805
- 183 string characters out of 6178000
- 46520 words of memory out of 5000000
- 3440 multiletter control sequences out of 15000+600000
- 3640 words of font info for 14 fonts, out of 8000000 for 9000
- 81 hyphenation exceptions out of 8191
- 10i,0n,7p,90b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 22 strings out of 482939
+ 441 string characters out of 5960268
+ 232822 words of memory out of 5000000
+ 15382 multiletter control sequences out of 15000+600000
+ 532338 words of font info for 24 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 14i,0n,17p,102b,10s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+No pages of output.
