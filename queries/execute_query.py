@@ -81,15 +81,4 @@ if __name__ == "__main__":
         else:
             fo_script = 'q' + n + 'fo.lp'
             os.system(('clingo ' + db_file + ' ' + fo_script))
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
+            
