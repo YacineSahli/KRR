@@ -10,10 +10,14 @@ script = """
 1 {rr2(X,Y,Z) : r2(X,Y,Z)} 1 :- r2(X,_,_).
 """
 
+rr = 'rr(Z) :- rr1(X,Y,Z), rr2(Y,V,W).\n'
+
 query = 'q(Z) :- r1(_,Y,Z), r2(Y,_,_).\n #show q/1.'
 
 
-def get_script(var: str):
+def get_script(var: str, rr_b=False):
+    if rr_b:
+        return script + rr
     return script + ':- rr1(_,Y,' + var + '), r2(Y,_,_).\n'
 
 

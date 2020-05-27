@@ -8,7 +8,7 @@ for i in range(7):
     for j in range(1,3):
         db_size = int(j * 1e3)
         nb_consist = int(db_size / arities[i] * 0.4)
-        nb_inconsist = int(db_size / arities[i] * 0.2)
+        nb_inconsist = int(db_size / arities[i] * 0.1)
         params = [db_size, inconsistency, nb_consist, nb_inconsist]
         # print('q'+str(i), params)
         
