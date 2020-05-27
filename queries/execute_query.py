@@ -47,7 +47,7 @@ def test_all_scripts(db_file, script, array, tmp_file):
         time += float(cmd_result[-1].strip('\n').split(': ')[1][:-1])
         if cmd_result[3] == 'UNSATISFIABLE\n':
             result.append(var)  
-    return time, len(result) == len(array), len(result), len(array)-len(result) 
+    return time, str(len(result)) + ' consistent answers out of ' + str(len(array)) 
     
     
 def execute_gt_query(db_file, script, query, tmp_file):

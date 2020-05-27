@@ -14,21 +14,22 @@ def generate(arity, parameters, methods):
     
     assert nb_inconsistent_answers <= remaining_inconsistent_tuples
     
+    total_tuples = 0  # Nb tuples for one relation 
     i = 0
     while i < nb_inconsistent_answers:
-        n = yy = zz = str(i * 3)
-        if i % 2 == 0 and nb_inconsistent_answers - i > 2:  # dangling
-            zz = str(i * 3 + 1)
-            i += 2
-        else:  # another_z
-            yy = str(i * 3 + 1)
-            i += 1            
+        n = yy = zz = str(i)
+        if i % 2 == 0 and nb_inconsistent_answers - i > 2:  # another_z
+            zz = 'z' + n
+            i += 2 # Another_z pattern add two inconsistant answers
+        else:  # dangling
+            yy = 'y' + n
+            i += 1 
+        total_tuples += 3
+        remaining_inconsistent_tuples -= 1  # For every inconsistent answer, a broken primary key was added 
         answer += inconsistent_answer(n, yy, zz)
+        
     
-    remaining_inconsistent_tuples -= nb_inconsistent_answers  # For every inconsistent answer, a broken primary was added 
-    
-    start = nb_inconsistent_answers * 3  # All the numbers under this one are already used
-    total_tuples = start  # Total tuples for one table
+    start = total_tuples  # Total tuples for one table
     for i in range(start, start + nb_consist_answers):
         if remaining_inconsistent_tuples > 0 and i % 2 == 0:
             answer += consistent_answer_2(i)
@@ -92,14 +93,14 @@ def consistent_answer_2(index):
     yy = 'a'+x
     o = 'o'+x
     result = 'r1(' + x + ',' + y + ',' + z + ').\n' \
-         + 'r3(' + y + ',' + v + ').\n'\
-         + 'r2(' + v + ',1,1).\n' \
-         + 'r1(' + x + ',' + yy + ',' + z + ').\n' \
-         + 'r3(' + yy + ',' + v + ').\n'\
-         + 'r2(' + o + ',1,1).\n' \
-         + 'r1(' + o + ',' + o + ',' + o + ').\n' \
-         + 'r3(' + yy + ',k' + o + ').\n'\
-         + 'r2(' + o + ',1,2).\n' 
+             + 'r3(' + y + ',' + v + ').\n'\
+             + 'r2(' + v + ',1,1).\n' \
+             + 'r1(' + x + ',' + yy + ',' + z + ').\n' \
+             + 'r3(' + yy + ',' + v + ').\n'\
+             + 'r2(' + o + ',1,1).\n' \
+             + 'r1(' + o + ',' + o + ',' + o + ').\n' \
+             + 'r3(' + yy + ',' + o + ').\n'\
+             + 'r2(' + o + ',1,2).\n' 
     return result
     
     

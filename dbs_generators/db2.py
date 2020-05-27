@@ -1,5 +1,5 @@
 import sys
-from generate_method import generate
+from db1 import generate
 
 
 def consistent_tuple(n):

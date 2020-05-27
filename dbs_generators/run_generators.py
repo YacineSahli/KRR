@@ -10,6 +10,7 @@ for i in range(7):
         nb_consist = int(db_size / arities[i] * 0.4)
         nb_inconsist = int(db_size / arities[i] * 0.2)
         params = [db_size, inconsistency, nb_consist, nb_inconsist]
+        # print('q'+str(i), params)
         
         cmd = 'python3 db' + str(i+1) + '.py ' + ' '.join(str(p) for p in params)
         db_file = '../generated_dbs/q' + str(i+1) + '_' + str(j)\

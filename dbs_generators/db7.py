@@ -1,5 +1,5 @@
 import sys
-from generate_method import generate
+from db6 import generate
 
 
 def consistent_tuple(n):
@@ -31,25 +31,9 @@ def consistent_answer_1(index):
     return result
     
     
-def consistent_answer_2(index):
-    x = y = z = v = str(index)
-    yy = 'a'+x
-    o = 'o'+x
-    result = 'r1(' + x + ',' + y + ',' + z + ').\n' \
-             + 'r2(' + y + ',' + x + ',1).\n' \
-             + 'r5(' + x + ',' + y + ',1).\n' \
-             + 'r1(' + x + ',' + yy + ',' + z + ').\n' \
-             + 'r2(' + yy + ',' + x + ',1).\n' \
-             + 'r5(' + x + ',' + yy + ',1).\n' \
-             + 'r1(' + o + ',' + o + ',' + o + ').\n' \
-             + 'r2(' + yy + ',' + x + ',2).\n' \
-             + 'r5(' + o + ',' + o + ',1).\n' 
-    return result
-    
-    
 if __name__ == "__main__":
     argv = sys.argv[1:]
     assert len(argv) == 4    
-    db = generate(3, [float(a) for a in argv], (inconsistent_answer, consistent_answer_1, consistent_answer_2, consistent_tuple, inconsistent_tuple))
+    db = generate(3, [float(a) for a in argv], (inconsistent_answer, consistent_answer_1, consistent_tuple, inconsistent_tuple))
     print(db)
     
