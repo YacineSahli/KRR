@@ -1,11 +1,13 @@
 import os
 
+
 def write_lp_file(s: str): # Not used anymore
     rr_line = build_rr_line(parse_var_array(s))
     f = open(output_file, 'w')
     f.write(script)
     f.write(rr_line)
     f.close()
+    
     
 def build_rr_line(array: list): # Not used anymore
     res = ':- '
@@ -14,8 +16,9 @@ def build_rr_line(array: list): # Not used anymore
     return res[:-2] + '.\n'
     
     
-def parse_var_array(s: str):
-    return s.replace('q(','').replace(')','').strip('\n').split(' ')
+def parse_var_array(s: str, query='q'):
+    q = query + '('
+    return s.replace(q,'').replace(')','').strip('\n').split(' ')
    
     
 def bash_cmd(cmd):
@@ -44,7 +47,7 @@ def test_all_scripts(db_file, script, array, tmp_file):
         time += float(cmd_result[-1].strip('\n').split(': ')[1][:-1])
         if cmd_result[3] == 'UNSATISFIABLE\n':
             result.append(var)  
-    return time, len(result) == len(array), result, array
+    return time, len(result) == len(array), len(result), len(array)-len(result) 
     
     
 def execute_gt_query(db_file, script, query, tmp_file):
@@ -63,6 +66,13 @@ def parse_argv(argv, script, query, tmp_file):
     else:
         execute_gt_query(argv[1], script, query, tmp_file)
 
+
+def run_fo_query(db_file, fo_script):
+    clingo_output = bash_cmd('clingo ' + db_file + ' ' + fo_script)
+    array = parse_var_array(clingo_output[4], 'cqa')
+    time = float(clingo_output[-1].strip('\n').split(': ')[1][:-1])
+    print(time, len(array))
+
     
 if __name__ == "__main__":
     import sys
@@ -80,16 +90,5 @@ if __name__ == "__main__":
             execute_gt_query(db_file, module.get_script, module.query, module.tmp_file)
         else:
             fo_script = 'q' + n + 'fo.lp'
-            os.system(('clingo ' + db_file + ' ' + fo_script))
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
+            run_fo_query(db_file, fo_script)
+            

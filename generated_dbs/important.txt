@@ -1,0 +1,2 @@
+Videz ce répertoire (à l'exception de ce fichier) avant de faire un commit).
+

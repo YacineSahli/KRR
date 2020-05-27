@@ -14,7 +14,7 @@ query = 'q(Z) :- r1(_,Y,Z), r2(Y,_,_).\n #show q/1.'
 
 
 def get_script(var: str):
-    return script + ':- rr1(_,Y,' + var + '), rr2(Y,_,_).\n'
+    return script + ':- rr1(_,Y,' + var + '), r2(Y,_,_).\n'
 
 
 if __name__ == "__main__":
