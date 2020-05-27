@@ -64,3 +64,4 @@ if __name__ == "__main__":
     verify_input(args.relations_arity,args.relations_size,args.pkSize,args.inconsistency)
     result = generate_db(args.relations_arity,args.relations_size,args.pkSize,args.inconsistency)
     print(result)
+    

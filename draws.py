@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-import argparse
+import sys
 
-def plot_params(xlabel: str, ylabel:str, title: str=None):
+def plot_params(xlabel: str, ylabel: str, title: str=None):
     if title is not None:
         plt.title(title)
     plt.xlabel(xlabel)
@@ -10,31 +10,114 @@ def plot_params(xlabel: str, ylabel:str, title: str=None):
 def show():
     plt.show()
     
-def add_line(xdata, ydata):
-    plt.plot(xdata, ydata)
+def add_line(xdata, ydata, label=None):
+    if label is not None:
+        plt.plot(xdata, ydata, marker='o', label = label)
+    else:
+        plt.plot(xdata, ydata, marker='o')
+    
+def read_file(filepath: str):
+    f = open(filepath, 'r')
+    lines = f.readlines()
+    f.close()
+    
+    i = 0
+    while i < len(lines) and i != -1:
+        i = plot_data(lines, i)
+        i += 1
     
     
+def plot_data(filelines, index):
+    i = skip_empty_lines(filelines, index)
+    line = filelines[i]
+    sline = line.split('=')
     
-def format_list(l: list):    
-    return [int(i) for i in l]
+    if sline[0] != 'legend':
+        return -1
+    legend = False
+    if sline[1] == '1\n':
+        legend = True 
+    
+    i += 1
+    sline = filelines[i].split('|')
+    
+    title = sline[0]
+    if sline[1] == '':
+        filename = title.replace(' ','') + '.png'
+    else:
+        filename = sline[1].replace(' ','') + '.png'
+    
+    i = skip_empty_lines(filelines, i+1)
+    xlabel, ylabel = filelines[i].strip('\n').split('-')
+    
+    plot_params(xlabel, ylabel, title)
+    
+    i += 1
+    while filelines[i] != '---\n':
+        add_curve(filelines, i, legend)
+        i += 3
+        
+    if legend:
+        plt.legend()
+    
+    plt.savefig(filename, format='png', dpi=200)
+    plt.close() 
+    return i    
+    
+def add_curve(filelines, index, legend):
+    xi, yi, name = filelines[index:index+3]
+    xdata = [float(n) for n in xi.strip('\n').split(',')]
+    ydata = [float(n) for n in yi.strip('\n').split(',')]
+    
+    if legend:
+        add_line(xdata, ydata, name)
+    else:
+        add_line(xdata, ydata)
+    
+def skip_empty_lines(filelines, i):
+    line = filelines[i]
+    while line == '\n':
+        i += 1
+        line = filelines[i]
+    return i
+    
         
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--xdata', '-X', required=True,
-                        type=str, nargs='+', help='No help')
-    parser.add_argument('--ydata', '-Y', required=True,
-                        type=str, nargs='+', help='No help')
-    parser.add_argument('--xlabel', '-x', required=True,
-                        type=str, nargs='+', help='No help')
-    parser.add_argument('--ylabel', '-y', required=True,
-                        type=str, nargs='+', help='No help')
-    parser.add_argument('--title', '-t', required=False,
-                        type=str, nargs='+', help='No help')
-    args = parser.parse_args()
-    print(args.xdata)
-    if args.title is None:
-        plot_data(format_list(args.xdata), format_list(args.ydata), args.xlabel[0], args.ylabel[0])
+    if len(sys.argv) != 2:
+        print("You must specify the file you want to treat")
     else:
-        plot_data(format_list(args.xdata), format_list(args.ydata), args.xlabel[0], args.ylabel[0], args.title[0])
-    input("Press enter to quit")
-    
+        read_file(sys.argv[1])
+        
+"""
+The input file must respect this syntax :
+
+----------------------
+legend=1
+title first plot | filename | information not readed
+
+x_axis title - y_axis title
+x1, x2, x3, x4 
+y1, y2, y3, y4 
+first curve name
+x11, x12, x13, x14
+y11, y12, y13, y14
+second curve name
+---
+
+legend=0
+title second plot - 
+...
+---
+---------------------
+
+
+A '-' must be placed after the plot titles, even if no information follows
+The filename must be without extension
+If '--' follows the plot title, the plot will be saved on ./'titlewithoutspaces.png'
+(x1, y1), (x2, y2), ... are the points of the first curve
+(x11, y11), (x12, y12) the points of the second curve
+the curves names are only used when legend=1 but must always be specified
+Other curves can be added following the same syntax
+After a plot specification, a '---' is needed
+"""
+

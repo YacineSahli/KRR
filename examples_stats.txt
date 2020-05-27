@@ -1,0 +1,30 @@
+
+legend=0
+premier plot - temps cpu en fonction taille db | firstplot | le tabac c'est tabou
+
+db size (nb atoms)-cpu time(s)
+1000, 1e6, 2e6, 3e6
+2.3, 28.5, 58.3, 62.7
+generate and test
+1000, 1e6, 2e6
+4.5, 40.6, 75.9
+fo
+---
+
+legend=1
+second plot : test | secondplot | hello world
+
+db size (nb atoms)-cpu time(s)
+1000, 1e6, 2e6, 3e6
+2.3, 28.5, 58.3, 62.7
+generate and test - yes instance
+1000, 1e6, 2e6
+4.5, 40.6, 75.9
+fo - yes_instance
+1000, 1e6, 2e6, 3e6, 4e6
+2.3, 28.5, 58.3, 62.7, 98.5
+generate and test - no instance
+1000, 1e6, 2e6
+18.4, 90.3, 95.2
+fo - yes instance
+---

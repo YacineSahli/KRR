@@ -6,7 +6,7 @@
 %%%
 
 %%% The following rule is optional.
-cqa(Z) :- not cqa(Z), r1(_,_,Z).
+%cqa(Z) :- not cqa(Z), r1(_,_,Z).
 %%%
 cqa(Z) :- r1(X,_,Z), not p_0(X,Z), not p_1(X).
 p_0(X,Z) :- r1(X,_,W), W != Z, r1(_,_,Z).
