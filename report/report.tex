@@ -170,6 +170,19 @@
 
 \newpage
 
+\section{Related Work}
+\emph{Consistent query answering} (CQA) started in 1999 with a seminal paper by Arenas, Bertossi and Chomicki~\cite{DBLP:conf/pods/ArenasBC99}.
+Two decades of research in CQA have recently been surveyed in~\cite{DBLP:conf/pods/Bertossi19,DBLP:journals/sigmod/Wijsen19}. 
+
+The suitability of Answer Set Programming (ASP) and stable model semantics for CQA has been recognized since the early days in theoretical research~\cite{DBLP:journals/tplp/ArenasBC03,DBLP:journals/tkde/GrecoGZ03}.
+In~\cite{DBLP:journals/dke/MarileoB10}, the authors present a prototype system for CQA that is theoretically founded in ASP.
+
+In CQA, the existence of consistent first-order rewritings, for different classes of queries and integrity constraints, is a recurrent research problem.
+For self-join-free conjunctive queries and primary keys, the problem has been studied in depth since~2005~\cite{DBLP:conf/icdt/FuxmanM05,DBLP:journals/jcss/FuxmanM07}, and was eventually solved in~2015~\cite{DBLP:conf/pods/KoutrisW15,DBLP:journals/tods/KoutrisW17}.
+Experiments of CQA with respect to primary keys have been conducted on several prototype systems, including ConQuer~\cite{DBLP:conf/sigmod/FuxmanFM05}, EQUIP~\cite{DBLP:journals/pvldb/KolaitisPT13}, and CAvSAT~\cite{DBLP:conf/sat/DixitK19}.
+The latter study, in particular, has revealed that discrepancies may exists between the theoretical computational complexity of $\cqa{q}$ and observed empirical performances. 
+In particular, it was observed that a generic SAT-based approach to $\cqa{q}$ may outperform solutions that use first-order rewriting.
+The main goal of the current paper is to investigate whether such observations also hold within the system of clingo ASP~\cite{DBLP:conf/lpnmr/GebserKKS11,DBLP:journals/corr/GebserKKS14}.
 
 \section{Introduction}
 The aim of this article is to present a fair comparison between two methods for
