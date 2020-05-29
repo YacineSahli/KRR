@@ -3,7 +3,7 @@ import os
 arities = [2,2,3,3,2,3,3]
 
 nbr_taille_diff = 1
-mult_taille = 1e6
+mult_taille = 1e5
 nb_consist = 1
 nb_inconsist = 0
 
