@@ -60,9 +60,9 @@ def list_answers(db_file, tmp_file, query):
 def execute_gt_query(db_file, script, query, tmp_file):
     array = list_answers(db_file, tmp_file, query)
     # print(array)
-    print(test_all_scripts(db_file, script, array, tmp_file))
+    result = test_all_scripts(db_file, script, array, tmp_file)
     rm_file(tmp_file) 
-    
+    return result
     
 def execute_rr_query(db_file, script, query, tmp_file):
     array = list_answers(db_file, tmp_file, query)
