@@ -4,7 +4,7 @@ arities = [2,2,3,3,2,3,3]
 
 def generatedb(inconsistency,nr):
     for i in range(7):
-        for rp_inc in range(0,nr,20):
+        for rp_inc in range(0,nr+1,20):
             db_size = 3000
             nb_consist = nr-rp_inc
             nb_inconsist = rp_inc

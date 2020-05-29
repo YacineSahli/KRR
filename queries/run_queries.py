@@ -18,6 +18,7 @@ if __name__ == "__main__":
             fo_script = 'q' + n + 'fo.lp'
 
             result += str(run_fo_query(db_file, fo_script)[0]) + ', '
+            print("DONE FO : ", i)
         
         result += '\n' 
         result += 'GT : ' + db_rep + '/X' + db_model + '\n'
@@ -27,8 +28,11 @@ if __name__ == "__main__":
             module_name = 'gtq' + n
             module = __import__(module_name)
             result += str(execute_gt_query(db_file, module.get_script, module.query, module.tmp_file)[0]) + ', '
-        
-        result += '\n'    
+            print("DONE GT : ", i)
+            
+            
+        result += '\n'
+        result += '--------------------------------------- \n'    
         f = open(output_file, 'a')
         f.write(result)
         f.close()
