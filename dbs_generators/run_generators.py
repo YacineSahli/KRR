@@ -2,11 +2,11 @@ import os
 
 arities = [2,2,3,3,2,3,3]
 
-inconsistency = 0.4
-nrb_taille_diff=5
-mult_taille=1e3
-rp_cons=0.4
-rp_inc=0.2
+inconsistency = 0.1
+nbr_taille_diff=10
+mult_taille=1e4
+rp_cons=0.1
+rp_inc=0
 
 for i in range(7):
     for j in range(1,nbr_taille_diff):
