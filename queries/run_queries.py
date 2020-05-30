@@ -3,7 +3,7 @@ from execute_query import *
 
 if __name__ == "__main__":
 
-    q_values = [0,1,2,3,4,5,6]
+    q_values = [1]
 
     if len(sys.argv) != 4:
         print("3 arguments expected : input_file_rep input_file_model output_file")   
