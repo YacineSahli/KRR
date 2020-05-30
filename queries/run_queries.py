@@ -19,7 +19,7 @@ if __name__ == "__main__":
             db_file = db_rep + '/' + n + db_model
             fo_script = 'q' + n + 'fo.lp'
 
-            result += str(run_fo_query(db_file, fo_script)[0]) + ', '
+            # result += str(run_fo_query(db_file, fo_script)[0]) + ', '
             print("DONE FO : ", i)
         
         result += '\n' 

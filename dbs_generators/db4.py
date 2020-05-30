@@ -6,9 +6,10 @@ def consistent_tuple(n):
     return 'r1(' + n + ',' + n + ',' + n + ').\n' + 'r2(w' + n + ',1,1).\n' + 'r3(q' + n + ',q' + n + ').\n'
 
     
-def inconsistent_tuple(n):
-    result = 'r1(' + n + ',' + n + ',' + n + ').\n' + 'r2(w' + n + ',1,1).\n' + 'r3(' + n + ',' + n + ').\n' \
-              + 'r1(' + n + ',p' + n + ',p' + n + ').\n' + 'r2(w' + n + ',1,2).\n' + 'r3(' + n + ',m' + n + ').\n'
+def inconsistent_tuple(n, size):
+    result = 'r1(' + n + ',' + n + ',' + n + ').\n' + 'r2(w' + n + ',1,1).\n' + 'r3(' + n + ',' + n + ').\n'
+    for i in range(size):
+        result += 'r1(' + n + ',p' + n + ',p' + str(i+1) + ').\n' + 'r2(w' + n + ',1,' + str(i+2) + ').\n' + 'r3(' + n + ',m' + str(i+2) + ').\n'
     return result   
     
     
