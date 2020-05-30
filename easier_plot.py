@@ -1,9 +1,10 @@
 
-f = open('result2_gt.txt', 'r')
+f = open('results_test1_con_1-5-6-7.txt', 'r')
 lines = f.readlines()
 f.close()
 
-abscisse = '0.2, 0.4, 0.6, 0.8\n'
+#abscisse = '0.2, 0.4, 0.6, 0.8\n'
+abscisse = '10000, 20000, 30000, 40000, 50000\n'
 
 fo = []
 gt = []

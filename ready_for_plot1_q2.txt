@@ -1,0 +1,18 @@
+
+legend=1
+Time in function of db size for q2 | result1_q2 | le tabac
+
+Db size(nb atoms)-Time(s)
+2500, 5000, 7500, 10000, 12500
+1.84, 9.33, 23.22, 43.63, 76.61
+Q2 consistent - fo
+2500, 5000, 7500, 10000, 12500
+0.06, 0.10, 0.15, 0.17, 0.21
+Q2 consistent - gt
+2500, 5000, 7500, 10000, 12500
+1.85, 9.37, 23.52, 43.50, 77.48
+Q2 inconsistent - fo
+2500, 5000, 7500, 10000, 12500
+0.06, 0.10, 0.14, 0.17, 0.21
+Q2 inconsistent - gt
+---
