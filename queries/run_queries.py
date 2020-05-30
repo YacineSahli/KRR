@@ -3,6 +3,8 @@ from execute_query import *
 
 if __name__ == "__main__":
 
+    q_values = [1]
+
     if len(sys.argv) != 4:
         print("3 arguments expected : input_file_rep input_file_model output_file")   
     else:
@@ -12,7 +14,7 @@ if __name__ == "__main__":
         result = ''
         
         result += 'FO : ' + db_rep + '/X' + db_model + '\n'
-        for i in range(7):
+        for i in q_values:
             n = str(i+1)
             db_file = db_rep + '/' + n + db_model
             fo_script = 'q' + n + 'fo.lp'
@@ -22,7 +24,7 @@ if __name__ == "__main__":
         
         result += '\n' 
         result += 'GT : ' + db_rep + '/X' + db_model + '\n'
-        for i in range(7):
+        for i in q_values:
             n = str(i+1)
             db_file = db_rep + '/' + n + db_model
             module_name = 'gtq' + n
