@@ -10,15 +10,15 @@ def generatedb(inconsistency,mult_taille,nbr_taille_diff,nb_con,nb_inc,path):
             nb_inconsist = nb_inc
             params = [db_size, inconsistency, nb_consist, nb_inconsist]
             # print('q'+str(i), params)
-            
+
             cmd = 'python3 db' + str(i+1) + '.py ' + ' '.join(str(p) for p in params)
             db_file = '../generated_dbs/test1/' + path+"/" + str(i+1) + '_' + str(db_size) + '_' + str(inconsistency) + '_'+ str(nb_consist)+"_"+str(nb_inconsist) + '.lp'
             os.system(cmd + ' > ' + db_file)
-        
+
 if __name__ == "__main__":
     inconsistency = 0.4
-    nbr_taille_diff=5
-    mult_taille=1e6
+    nbr_taille_diff=6
+    mult_taille=5e5
     nb_con=1
     nb_inc=0
     generatedb(inconsistency,mult_taille,nbr_taille_diff,1,0,"con")
