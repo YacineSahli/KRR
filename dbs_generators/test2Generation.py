@@ -2,7 +2,7 @@ import os
 
 arities = [2,2,3,3,2,3,3]
 
-db_size = 10000
+db_size = 150000
 nb_consist = 1
 nb_inconsist = 0
 
@@ -16,7 +16,7 @@ for inconsistency in inconsistenties:
         # print('q'+str(i), params)
 
         cmd = 'python3 db' + str(i+1) + '.py ' + ' '.join(str(p) for p in params)
-        db_file = '../generated_dbs/test2/con/' + str(i+1) + '_' + str(inconsistency) + '.lp'
+        db_file = '../generated_dbs/test2/con/' + str(i+1) + '_' + str(int(db_size/1000)) + 'k_' + str(inconsistency) + '.lp'
         os.system(cmd + ' > ' + db_file)
 
 # Inconsistant
@@ -29,6 +29,6 @@ for inconsistency in inconsistenties:
         # print('q'+str(i), params)
 
         cmd = 'python3 db' + str(i+1) + '.py ' + ' '.join(str(p) for p in params)
-        db_file = '../generated_dbs/test2/inc/' + str(i+1) + '_' + str(inconsistency) + '.lp'
+        db_file = '../generated_dbs/test2/inc/' + str(i+1) + '_' + str(int(db_size/1000)) + 'k_' + str(inconsistency) + '.lp'
         os.system(cmd + ' > ' + db_file)
 

@@ -1,9 +1,9 @@
 
-f = open('results_test4.txt', 'r')
+f = open('result2_gt.txt', 'r')
 lines = f.readlines()
 f.close()
 
-abscisse = '0, 20, 40, 60, 80, 100\n'
+abscisse = '0.2, 0.4, 0.6, 0.8\n'
 
 fo = []
 gt = []
@@ -27,5 +27,6 @@ for i in range(len(fo[0])):
     res += ', '.join(["{:.2f}".format(ml[i]) for ml in gt]) + '\n'
     res += 'Q' + str(i+1) + ' - gt\n'
 
+res += '---'
 print(res)
 

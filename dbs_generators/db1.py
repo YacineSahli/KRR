@@ -44,9 +44,12 @@ def generate(arity, parameters, methods):
     
     while remaining_inconsistent_tuples > 0:
         n = str(total_tuples)
-        answer += inconsistent_tuple(n)
-        total_tuples += 2
-        remaining_inconsistent_tuples -= 1
+        size = min(4, remaining_inconsistent_tuples)
+        if remaining_inconsistent_tuples >= nb_tuples - total_tuples:
+            size = remaining_inconsistent_tuples
+        answer += inconsistent_tuple(n, size)
+        total_tuples += 1 + size
+        remaining_inconsistent_tuples -= size
         
     # print('TEST2 : ', total_tuples, answer.count('r1'), answer.count('r2'))
             
@@ -64,10 +67,12 @@ def consistent_tuple(n):
     return 'r1(' + n + ',' + n + ',' + n + ').\n' + 'r2(w' + n + ',1,1).\n' 
 
 
-def inconsistent_tuple(n):
-    result = 'r1(' + n + ',' + n + ',' + n + ').\n' + 'r2(w' + n + ',1,1).\n' \
-             + 'r1(' + n + ',p' + n + ',p' + n + ').\n' + 'r2(w' + n + ',2,1).\n'
+def inconsistent_tuple(n, size):
+    result = 'r1(' + n + ',' + n + ',' + n + ').\n' + 'r2(w' + n + ',1,1).\n'
+    for i in range(size):
+        result += 'r1(' + n + ',p' + str(i+2) + ',p' + n + ').\n' + 'r2(w' + n + ',' + str(i+2) + ',1).\n'
     return result
+    
 
     
 def inconsistent_answer(n, yy, zz):
