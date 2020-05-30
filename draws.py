@@ -1,20 +1,16 @@
 import matplotlib.pyplot as plt
 import sys
 
+SAVE = False
+
+COLORS = {}
+
 def plot_params(xlabel: str, ylabel: str, title: str=None):
     if title is not None:
         plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     
-def show():
-    plt.show()
-    
-def add_line(xdata, ydata, label=None):
-    if label is not None:
-        plt.plot(xdata, ydata, marker='o', label = label)
-    else:
-        plt.plot(xdata, ydata, marker='o')
     
 def read_file(filepath: str):
     f = open(filepath, 'r')
@@ -58,21 +54,35 @@ def plot_data(filelines, index):
         i += 3
         
     if legend:
-        plt.legend()
+        leg = plt.legend()
     
-    plt.savefig(filename, format='png', dpi=200)
+    if SAVE:
+        plt.savefig(filename, format='png', dpi=200)
+    else:
+        if leg:
+            leg.set_draggable(True)
+        plt.show()
     plt.close() 
     return i    
+    
     
 def add_curve(filelines, index, legend):
     xi, yi, name = filelines[index:index+3]
     xdata = [float(n) for n in xi.strip('\n').split(',')]
     ydata = [float(n) for n in yi.strip('\n').split(',')]
     
-    if legend:
-        add_line(xdata, ydata, name)
+    q_name, q_type = name.split(' - ')
+
+    col = COLORS.get(q_name)
+        
+    if q_type == 'fo\n':
+        p = plt.plot(xdata, ydata, color=col, marker='o', linestyle='dashed')
     else:
-        add_line(xdata, ydata)
+        p = plt.plot(xdata, ydata, color=col, marker='o', label=q_name)
+    
+    if COLORS.get(q_name) is None:
+        COLORS[q_name] = p[0].get_color()
+        
     
 def skip_empty_lines(filelines, i):
     line = filelines[i]

@@ -17,8 +17,8 @@ def generatedb(inconsistency,mult_taille,nbr_taille_diff,nb_con,nb_inc,path):
 
 if __name__ == "__main__":
     inconsistency = 0.4
-    nbr_taille_diff=6
-    mult_taille=5e5
+    nbr_taille_diff=5
+    mult_taille=2500
     nb_con=1
     nb_inc=0
     generatedb(inconsistency,mult_taille,nbr_taille_diff,1,0,"con")

@@ -1,0 +1,25 @@
+FO : ../generated_dbs/test1/con/X_2500_0.4_1_0.lp
+1.84, 
+GT : ../generated_dbs/test1/con/X_2500_0.4_1_0.lp
+0.056, 
+--------------------------------------- 
+FO : ../generated_dbs/test1/con/X_5000_0.4_1_0.lp
+9.331, 
+GT : ../generated_dbs/test1/con/X_5000_0.4_1_0.lp
+0.097, 
+--------------------------------------- 
+FO : ../generated_dbs/test1/con/X_7500_0.4_1_0.lp
+23.224, 
+GT : ../generated_dbs/test1/con/X_7500_0.4_1_0.lp
+0.14700000000000002, 
+--------------------------------------- 
+FO : ../generated_dbs/test1/con/X_10000_0.4_1_0.lp
+43.634, 
+GT : ../generated_dbs/test1/con/X_10000_0.4_1_0.lp
+0.17200000000000001, 
+--------------------------------------- 
+FO : ../generated_dbs/test1/con/X_12500_0.4_1_0.lp
+76.612, 
+GT : ../generated_dbs/test1/con/X_12500_0.4_1_0.lp
+0.213, 
+--------------------------------------- 

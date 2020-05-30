@@ -36,9 +36,11 @@ def rm_file(filepath):
     os.system('rm ' + filepath)
 
 
-def test_all_scripts(db_file, script, array, tmp_file):
+def test_all_scripts(db_file, script, array, tmp_file, time):
     result = []
-    time = 0.0
+    if len(array) == 1 and array[0] == '':
+        write_file(tmp_file, '')
+        return time, 'No answer', 'yes-instance : true'
     for var in array:
         line = script(var)
         write_file(tmp_file, line)
@@ -54,22 +56,23 @@ def list_answers(db_file, tmp_file, query):
     write_file(tmp_file, query)
     output = bash_cmd('clingo ' + db_file + ' ' + tmp_file)
     rm_file(tmp_file)
-    return parse_var_array(output[4])
+    return parse_var_array(output[4]), float(output[-1].strip('\n').split(': ')[1][:-1])
     
     
 def execute_gt_query(db_file, script, query, tmp_file):
-    array = list_answers(db_file, tmp_file, query)
+    array, time = list_answers(db_file, tmp_file, query)
     # print(array)
-    result = test_all_scripts(db_file, script, array, tmp_file)
+    result = test_all_scripts(db_file, script, array, tmp_file, time)
     rm_file(tmp_file) 
     return result
     
+    
 def execute_rr_query(db_file, script, query, tmp_file):
-    array = list_answers(db_file, tmp_file, query)
+    array, time = list_answers(db_file, tmp_file, query)
     clingo_script = script('', True) + build_rr_line(array)
     write_file(tmp_file, clingo_script)
     cmd_result = bash_cmd('clingo ' + db_file + ' ' + tmp_file)
-    time = float(cmd_result[-1].strip('\n').split(': ')[1][:-1])
+    time += float(cmd_result[-1].strip('\n').split(': ')[1][:-1])
     yes_instance = False
     if cmd_result[3] == 'UNSATISFIABLE\n':
         yes_instance = True
@@ -110,7 +113,7 @@ if __name__ == "__main__":
             module_name = 'gtq'+n
             module = __import__(module_name)
             if query_type == 'gt':
-                execute_gt_query(db_file, module.get_script, module.query, module.tmp_file)
+                print(execute_gt_query(db_file, module.get_script, module.query, module.tmp_file))
             else:
                 print(execute_rr_query(db_file, module.get_script, module.query, module.tmp_file))
             
